@@ -55,4 +55,4 @@
 `npm install -g har2ammo`
 
 ## Лицензия
-GNU General Public License v2s
+GNU General Public License v2.
