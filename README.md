@@ -1,6 +1,6 @@
 # har2ammo
 
-Генератор паторонов из `*.har` файлов в `ammo.txt` для `yandex-tank`.
+Генератор паторонов из [.har](http://en.wikipedia.org/wiki/.har) файлов в [ammo.txt](https://yandextank.readthedocs.org/en/latest/tutorial.html#uri-style-uris-in-file) для [yandex-tank](https://github.com/yandex-load/yandex-tank).
 
 ## Возможности
 
@@ -48,7 +48,7 @@
 
 ## Установка
 
-Для работы `nar2ammo` требуются [nodejs](http://nodejs.org/) и [npm](https://npmjs.org).
+Для работы `har2ammo` требуются [nodejs](http://nodejs.org/) и [npm](https://npmjs.org).
 
 Установка:
 
