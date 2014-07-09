@@ -18,8 +18,6 @@ var program = require('commander'),
 
 var Har2Ammo = function (program, config, _) {
 
-    var fs = require('fs');
-
     this.har = null;
     this.host = null;
     this.cookieNumber = null;
