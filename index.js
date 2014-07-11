@@ -8,6 +8,7 @@ var program = require('commander'),
     config = {
         "autoTag": true,
         "host": null,
+        "pathFilterRegexp": false,
         "clearCookies": false,
         "customCookies": false,
         "customHeaders": [{
@@ -54,7 +55,7 @@ var Har2Ammo = function (program, config, _) {
     }
 
     this.getHAR = function () {
-        var har = this.require(this.pathNormalise(program.input));
+        var har = this.parseJsonFile(program.input);
         if (har && har.log && har.log.entries && har.log.entries.length) {
             this.har = har.log.entries;
         } else {
@@ -63,8 +64,8 @@ var Har2Ammo = function (program, config, _) {
         }
     }
 
-    this.require = function(filename) {
-        var content = fs.readFileSync(filename, 'utf8');
+    this.parseJsonFile = function(filename) {
+        var content = fs.readFileSync(this.pathNormalise(filename), 'utf8');
             return JSON.parse(content);
     }
 
@@ -74,7 +75,7 @@ var Har2Ammo = function (program, config, _) {
             return;
         }
 
-        var conf = this.require(this.pathNormalise(program.config));
+        var conf = this.parseJsonFile(program.config);
         this.config = _.extend(config, conf);
     }
 
@@ -84,18 +85,24 @@ var Har2Ammo = function (program, config, _) {
     }
 
     this.filterHar = function () {
-        if (this.host === false || this.host === 'false') {
-            return;
-        }
         var newHar = [],
-            hostRegExp = new RegExp(this.host);
+            hostFilterEnabled = !(this.host === false || this.host === 'false'),
+            hostFilter = hostFilterEnabled && new RegExp(this.host),
+            pathFilterEnabled = !(!this.config.pathFilterRegexp && this.config.pathFilterRegexp !== 'false'),
+            pathFilter = pathFilterEnabled && new RegExp(this.config.pathFilterRegexp);
 
         _.each(this.har, function (item) {
-            var host = item.request.url;
-            host = url.parse(host).hostname;
-            if (hostRegExp.test(host)) {
-                newHar.push(item);
+            var host = item.request.url,
+                parsedUrl = url.parse(host),
+                host = parsedUrl.hostname,
+                path = parsedUrl.path;
+            if (hostFilter && !hostFilter.test(host)) {
+                return;
             }
+            if (pathFilter && !pathFilter.test(path)) {
+                return;
+            }
+            newHar.push(item);
         });
 
         this.har = newHar;
