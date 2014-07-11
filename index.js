@@ -8,6 +8,7 @@ var program = require('commander'),
     config = {
         "autoTag": true,
         "host": null,
+        "pathFilterRegexp": false,
         "clearCookies": false,
         "customCookies": false,
         "customHeaders": [{
@@ -84,18 +85,24 @@ var Har2Ammo = function (program, config, _) {
     }
 
     this.filterHar = function () {
-        if (this.host === false || this.host === 'false') {
-            return;
-        }
         var newHar = [],
-            hostRegExp = new RegExp(this.host);
+            hostFilterEnabled = !(this.host === false || this.host === 'false'),
+            hostFilter = hostFilterEnabled && new RegExp(this.host),
+            pathFilterEnabled = !(!this.config.pathFilterRegexp && this.config.pathFilterRegexp !== 'false'),
+            pathFilter = pathFilterEnabled && new RegExp(this.config.pathFilterRegexp);
 
         _.each(this.har, function (item) {
-            var host = item.request.url;
-            host = url.parse(host).hostname;
-            if (hostRegExp.test(host)) {
-                newHar.push(item);
+            var host = item.request.url,
+                parsedUrl = url.parse(host),
+                host = parsedUrl.hostname,
+                path = parsedUrl.path;
+            if (hostFilter && !hostFilter.test(host)) {
+                return;
             }
+            if (pathFilter && !pathFilter.test(path)) {
+                return;
+            }
+            newHar.push(item);
         });
 
         this.har = newHar;
