@@ -54,7 +54,7 @@ var Har2Ammo = function (program, config, _) {
     }
 
     this.getHAR = function () {
-        var har = this.require(this.pathNormalise(program.input));
+        var har = this.parseJsonFile(program.input);
         if (har && har.log && har.log.entries && har.log.entries.length) {
             this.har = har.log.entries;
         } else {
@@ -63,8 +63,8 @@ var Har2Ammo = function (program, config, _) {
         }
     }
 
-    this.require = function(filename) {
-        var content = fs.readFileSync(filename, 'utf8');
+    this.parseJsonFile = function(filename) {
+        var content = fs.readFileSync(this.pathNormalise(filename), 'utf8');
             return JSON.parse(content);
     }
 
@@ -74,7 +74,7 @@ var Har2Ammo = function (program, config, _) {
             return;
         }
 
-        var conf = this.require(this.pathNormalise(program.config));
+        var conf = this.parseJsonFile(program.config);
         this.config = _.extend(config, conf);
     }
 
