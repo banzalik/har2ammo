@@ -43,24 +43,32 @@ var Har2Ammo = function (program, config, _) {
 
         if (!this.ifExistsFile(program.input)) {
             error = 'File ' + program.input + ' not exist!';
-            console.log(error.red);
-            process.exit();
+            console.error(error.red);
+            process.exit(1);
         }
 
         if (program.config && !this.ifExistsFile(program.config)) {
             error = 'File ' + program.config + ' not exist!';
-            console.log(error.red);
-            process.exit();
+            console.error(error.red);
+            process.exit(1);
         }
     }
 
     this.getHAR = function () {
-        var har = this.parseJsonFile(program.input);
+        try {
+            var har = this.parseJsonFile(program.input);
+        } catch (e) {
+            var error = "Can't parse HAR file - " + e.message;
+            console.error(error.red);
+            process.exit(2);
+        }
+
         if (har && har.log && har.log.entries && har.log.entries.length) {
             this.har = har.log.entries;
         } else {
             var error = 'Invalid HAR file.';
-            console.log(error.red);
+            console.error(error.red);
+            process.exit(2);
         }
     }
 
@@ -253,7 +261,7 @@ var Har2Ammo = function (program, config, _) {
 };
 
 program
-    .version('0.1.1')
+    .version('0.1.2')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
