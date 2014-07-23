@@ -1,4 +1,4 @@
-# har2ammo
+# har2ammo [![Build Status](https://secure.travis-ci.org/banzalik/har2ammo.png?branch=master)](http://travis-ci.org/banzalik/har2ammo)
 
 Генератор паторонов из [.har](http://en.wikipedia.org/wiki/.har) файлов в [ammo.txt](https://yandextank.readthedocs.org/en/latest/tutorial.html#uri-style-uris-in-file) для [yandex-tank](https://github.com/yandex-load/yandex-tank).
 
