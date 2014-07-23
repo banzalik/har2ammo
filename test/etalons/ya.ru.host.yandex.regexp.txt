@@ -1,0 +1,21 @@
+690 /system/fc06.html
+GET /system/fc06.html HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
+Host: kiks.yandex.ru
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Referer: http://ya.ru/
+Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yandexuid=7824958081406133331
+Connection: keep-alive
+If-Modified-Since: Thu, 03 Dec 2009 15:22:16 GMT
+Cache-Control: max-age=0
+
+
+
+78 /system/fc06.swf
+GET /system/fc06.swf HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
+
+
+

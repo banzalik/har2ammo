@@ -2,15 +2,13 @@
     "name": "har2ammo",
     "description": "HAR to ammo.txt",
     "keywords": "yandex-tank, har2ammo, ammo.txt, har",
-    "version": "0.1.2",
+    "version": "0.1.3",
     "homepage": "https://github.com/banzalik/har2ammo",
     "author": "Aleksandr Boichenko <banzalik@gmail.com> (http://github.com/banzalik)",
-    "maintainers": [
-    ],
-    "contributors": [
-    ],
+    "maintainers": [],
+    "contributors": [],
     "bin": {
-      "har2ammo": "./index.js"
+        "har2ammo": "./index.js"
     },
     "bugs": {
         "url": "https://github.com/banzalik/har2ammo/issues"
@@ -18,6 +16,9 @@
     "repository": {
         "type": "git",
         "url": "https://github.com/banzalik/har2ammo.git"
+    },
+    "scripts": {
+        "test": "mocha"
     },
     "dependencies": {
         "lodash": ">= 2.3.0",
@@ -27,9 +28,6 @@
     "files": [
         "index.js"
     ],
-    "devDependenciesTMP": {
-        "mocha": ">=1.14.0"
-    },
     "engines": {
         "node": ">= 0.6.0"
     },
@@ -39,5 +37,9 @@
             "url": "https://raw.github.com/banzalik/har2ammo/master/LICENSE"
         }
     ],
-    "optionalDependencies": {}
+    "optionalDependencies": {},
+    "devDependencies": {
+        "mocha": "^1.20.1",
+        "exec-sync": "^0.1.6"
+    }
 }

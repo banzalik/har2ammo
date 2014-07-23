@@ -28,7 +28,7 @@ var Har2Ammo = function (program, config, _) {
         this.checkParams();
         this.getHAR();
         this.getConfig();
-        this.getBaseHost();
+        this.host = this.getBaseHost();
         this.filterHar();
         this.beforeProcess();
         this.process();
@@ -94,7 +94,7 @@ var Har2Ammo = function (program, config, _) {
 
     this.filterHar = function () {
         var newHar = [],
-            hostFilterEnabled = !(this.host === false || this.host === 'false'),
+            hostFilterEnabled = !(this.config.host === false || this.config.host === 'false'),
             hostFilter = hostFilterEnabled && new RegExp(this.host),
             pathFilterEnabled = !(!this.config.pathFilterRegexp && this.config.pathFilterRegexp !== 'false'),
             pathFilter = pathFilterEnabled && new RegExp(this.config.pathFilterRegexp);
@@ -117,14 +117,18 @@ var Har2Ammo = function (program, config, _) {
     }
 
     this.getBaseHost = function () {
+        var host;
+
         if (program.host) {
-            this.host = program.host;
+            host = program.host;
         } else if (this.config.host) {
-            this.host = this.config.host;
+            host = this.config.host;
         } else {
-            var host = this.har[0].request.url;
-            this.host = url.parse(host).hostname
+            var firstHost = this.har[0].request.url;
+            host = url.parse(firstHost).hostname;
         }
+
+        return host;
     }
 
     this.process = function () {
@@ -164,10 +168,11 @@ var Har2Ammo = function (program, config, _) {
         var resp, respSize, tag = "", req = [],
             method = request.method,
             target = this.absToRelUrl(request.url),
+            httpVersion = request.httpVersion || "HTTP/1.1",
             self = this;
         post = '';
 
-        req.push(method + ' ' + target + ' ' + request.httpVersion + '\n');
+        req.push(method + ' ' + target + ' ' + httpVersion + '\n');
 
         if (method === "POST") {
             if (request.postData && request.postData.text) {
@@ -261,7 +266,7 @@ var Har2Ammo = function (program, config, _) {
 };
 
 program
-    .version('0.1.2')
+    .version('0.1.3')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
