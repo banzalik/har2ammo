@@ -13,9 +13,9 @@ describe('Help', function () {
 });
 
 describe('Version', function () {
-    var etalonVersion = getEtalon('version'),
+    var etalonVersion = help.cleanN(getEtalon('version')),
         packageVersion = require('../package.json').version,
-        realVersion = har2ammo("-V");
+        realVersion = help.cleanN(har2ammo("-V"));
 
     it('Package version', function () {
         assert.equal(etalonVersion, packageVersion);

@@ -1,4 +1,4 @@
-var exec = require("exec-sync"),
+var exec = require("execSync").exec,
     har2ammoPath = "./index.js ";
 
 module.exports = {
@@ -6,13 +6,13 @@ module.exports = {
         if (!path) {
             return;
         }
-        return exec("cat test/etalons/" + path + ".txt");
+        return exec("cat test/etalons/" + path + ".txt").stdout;
     },
     getResult: function (path) {
         if (!path) {
             return;
         }
-        return exec("cat test/results/" + path + ".txt");
+        return exec("cat test/results/" + path + ".txt").stdout;
     },
     getConfig: function (path) {
         if (!path) {
@@ -36,6 +36,9 @@ module.exports = {
         if (!params) {
             params = ''
         }
-        return exec(har2ammoPath + params);
+        return exec(har2ammoPath + params).stdout;
+    },
+    cleanN: function(str) {
+        return str.replace(/\r?\n|\r/, '')
     }
 }
