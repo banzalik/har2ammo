@@ -1,18 +1,24 @@
 var exec = require("execSync").exec,
+    fs = require('fs'),
     har2ammoPath = "./index.js ";
 
+function getFileContent(path) {
+    return fs.readFileSync(path, 'utf8');
+}
 module.exports = {
     getEtalon: function (path) {
         if (!path) {
             return;
         }
-        return exec("cat test/etalons/" + path + ".txt").stdout;
+        var fullPath = "test/etalons/" + path + ".txt";
+        return getFileContent(fullPath);
     },
     getResult: function (path) {
         if (!path) {
             return;
         }
-        return exec("cat test/results/" + path + ".txt").stdout;
+        var fullPath = "test/results/" + path + ".txt";
+        return getFileContent(fullPath);
     },
     getConfig: function (path) {
         if (!path) {
@@ -36,9 +42,10 @@ module.exports = {
         if (!params) {
             params = ''
         }
-        return exec(har2ammoPath + params).stdout;
+        var cmd = har2ammoPath + params;
+        return exec(cmd).stdout;
     },
-    cleanN: function(str) {
+    cleanN: function (str) {
         return str.replace(/\r?\n|\r/, '')
     }
 }

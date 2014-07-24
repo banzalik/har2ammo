@@ -4,7 +4,6 @@ var assert = require("assert"),
     getResult = utils.getResult,
     har2ammo = utils.har2ammo;
 
-
 describe('Simple', function () {
 
     it('Default', function () {
