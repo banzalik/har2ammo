@@ -5,6 +5,7 @@ var exec = require("execSync").exec,
 function getFileContent(path) {
     return fs.readFileSync(path, 'utf8');
 }
+
 module.exports = {
     getEtalon: function (path) {
         if (!path) {
@@ -42,7 +43,11 @@ module.exports = {
         if (!params) {
             params = ''
         }
-        var cmd = har2ammoPath + params;
+        var cmd = har2ammoPath + params,
+            result = exec(cmd);
+        if (result.code === 1) {
+            throw new Error(result.stdout, cmd);
+        }
         return exec(cmd).stdout;
     },
     cleanN: function (str) {

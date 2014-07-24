@@ -1,0 +1,17 @@
+{
+    "autoTag": true,
+    "host": null,
+    "pathFilterRegexp": false,
+    "clearCookies": true,
+    "customCookies": false,
+    "customHeaders": [{
+        "name": "Custom-Header",
+        "value": "true"
+    },{
+        "name": "Hello",
+        "value": "Word"
+    }, {
+        "name": "User-Agent",
+        "value": "Tank"
+    }]
+}
