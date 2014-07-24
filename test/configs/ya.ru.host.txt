@@ -1,9 +1,9 @@
-341 /
+439 /
 GET / HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: ya.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: yandex-tank yandex-tank/har2ammo
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
 Cookie: yandexuid=3368441331406133331
@@ -11,9 +11,9 @@ Connection: keep-alive
 
 
 
-455 /www/1.982/yaru/pages/desktop/_desktop.css
+465 /www/1.982/yaru/pages/desktop/_desktop.css
 GET /www/1.982/yaru/pages/desktop/_desktop.css HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: yastatic.net
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -25,9 +25,9 @@ Cache-Control: max-age=0
 
 
 
-471 /www/1.982/yaru/i/logo.png
+481 /www/1.982/yaru/i/logo.png
 GET /www/1.982/yaru/i/logo.png HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: yastatic.net
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -40,9 +40,9 @@ Referer: http://ya.ru/
 
 
 
-618 /su/
+628 /su/
 GET /su/ HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: kiks.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -54,9 +54,9 @@ Cache-Control: max-age=0
 
 
 
-601 /watch/723233
+611 /watch/723233
 GET /watch/723233 HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: mc.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -68,9 +68,9 @@ Cache-Control: max-age=0
 
 
 
-453 /jquery/2.1.0/jquery.min.js
+463 /jquery/2.1.0/jquery.min.js
 GET /jquery/2.1.0/jquery.min.js HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: yandex.st
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -83,9 +83,9 @@ Referer: http://ya.ru/
 
 
 
-452 /www/1.982/yaru/pages/desktop/_desktop.templates.ru.js
+462 /www/1.982/yaru/pages/desktop/_desktop.templates.ru.js
 GET /www/1.982/yaru/pages/desktop/_desktop.templates.ru.js HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: yastatic.net
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -97,9 +97,9 @@ Cache-Control: max-age=0
 
 
 
-562 /data/mail.js
+572 /data/mail.js
 GET /data/mail.js?yaru=y HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: www.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -111,9 +111,9 @@ Cache-Control: max-age=0
 
 
 
-459 /V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0
+469 /V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0
 GET /V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0 HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: www.tns-counter.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -125,9 +125,9 @@ Cache-Control: max-age=0
 
 
 
-485 /lego/_/FpB59tewsg6QVssW506guPCzcaU.png
+495 /lego/_/FpB59tewsg6QVssW506guPCzcaU.png
 GET /lego/_/FpB59tewsg6QVssW506guPCzcaU.png HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: yastatic.net
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -140,9 +140,9 @@ Referer: http://ya.ru/
 
 
 
-483 /www/_/UlsBzUHrzXNNmc65s2qEWEZfvtg.png
+493 /www/_/UlsBzUHrzXNNmc65s2qEWEZfvtg.png
 GET /www/_/UlsBzUHrzXNNmc65s2qEWEZfvtg.png HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: yastatic.net
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -155,9 +155,9 @@ Referer: http://ya.ru/
 
 
 
-680 /system/fc06.html
+690 /system/fc06.html
 GET /system/fc06.html HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: kiks.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -170,9 +170,9 @@ Cache-Control: max-age=0
 
 
 
-701 /suggest-ya.cgi
+711 /suggest-ya.cgi
 GET /suggest-ya.cgi?callback=jQuery21005751246530562639_1406133337882&v=4&srv=morda_yaru&wiz=TrWth&fact=1&lr=213&icon=1&hl=1&html=1&part=&pos=0&_=1406133337883 HTTP/1.1
-Accept-Encoding: gzip,deflate,sdch
+User-Agent: yandex-tank yandex-tank/har2ammo
 Host: suggest.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
 User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
@@ -184,8 +184,9 @@ Cache-Control: max-age=0
 
 
 
-33 /system/fc06.swf
+78 /system/fc06.swf
 GET /system/fc06.swf HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 
 
 

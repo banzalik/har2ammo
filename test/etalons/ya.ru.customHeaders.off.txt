@@ -1,12 +1,11 @@
-341 /
+391 /
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: yandex-tank yandex-tank/har2ammo
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
-Cookie: yandexuid=3368441331406133331
 Connection: keep-alive
 
 

@@ -184,7 +184,7 @@ var Har2Ammo = function (program, config, _) {
         }
 
         if (this.config.customHeaders.length) {
-            request.headers = _.extend(request.headers, this.config.customHeaders);
+            request.headers = this.extend(request.headers, this.config.customHeaders);
         }
 
         _.each(request.headers, function (item) {
@@ -262,11 +262,28 @@ var Har2Ammo = function (program, config, _) {
     this.afterProcess = function () {
     }
 
+    this.extend = function (to, from) {
+        var resultArray = [];
+        to.forEach(function (elem) {
+            var index = _.findIndex(from, {name: elem.name});
+            if (index !== -1) {
+                resultArray.push(from[index]);
+                from[index] = '';
+            }
+            else {
+                resultArray.push(elem);
+            }
+        });
+        resultArray = resultArray.concat(_.compact(from));
+
+        return resultArray;
+    }
+
     this.init();
 };
 
 program
-    .version('0.1.3')
+    .version('0.1.4')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
