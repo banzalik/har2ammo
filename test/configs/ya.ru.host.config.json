@@ -1,0 +1,11 @@
+{
+    "autoTag": true,
+    "host": false,
+    "pathFilterRegexp": false,
+    "clearCookies": false,
+    "customCookies": false,
+    "customHeaders": [{
+		"name": "User-Agent",
+        "value": "yandex-tank yandex-tank/har2ammo"
+    }]
+}

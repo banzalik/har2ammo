@@ -1,0 +1,17 @@
+
+  Usage: index [options]
+
+  Options:
+
+    -h, --help                      output usage information
+    -V, --version                   output the version number
+    -i, --input <file>              path to HAR file
+    -o, --output <file> [required]  path to ammo.txt file
+    -h, --host <hostname>           base host, strong val
+    -c, --config <file> [required]  parh to config file
+
+  Examples:
+
+    har2ammo -i input.har -o ammo.txt
+    har2ammo -c config.json -i input.har -o ammo.txt
+
