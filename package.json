@@ -18,7 +18,7 @@
         "url": "https://github.com/banzalik/har2ammo.git"
     },
     "scripts": {
-        "test": "ls -la && mocha"
+        "test": "mocha"
     },
     "dependencies": {
         "lodash": ">= 2.3.0",
