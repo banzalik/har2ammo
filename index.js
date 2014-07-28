@@ -1,10 +1,5 @@
 #!/usr/bin/env node
 var program = require('commander'),
-    lodash = require('lodash'),
-    colors = require('colors'), // подсветка вывода данных
-    url = require('url'),
-    fs = require('fs'),
-    path = require('path'),
     config = {
         "autoTag": true,
         "host": null,
@@ -17,7 +12,12 @@ var program = require('commander'),
         }]
     };
 
-var Har2Ammo = function (program, config, _) {
+var Har2Ammo = function (program, config) {
+    var _ = require('lodash'),
+        colors = require('colors'), // подсветка вывода данных
+        url = require('url'),
+        fs = require('fs'),
+        path = require('path');
 
     this.har = null;
     this.host = null;
@@ -283,7 +283,7 @@ var Har2Ammo = function (program, config, _) {
 };
 
 program
-    .version('0.1.4')
+    .version('0.1.5')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
@@ -300,4 +300,4 @@ program.on('--help', function () {
 
 program.parse(process.argv);
 
-var har2ammo = new Har2Ammo(program, config, lodash);
+var har2ammo = new Har2Ammo(program, config);
