@@ -57,4 +57,4 @@
 `npm install -g har2ammo`
 
 ## Лицензия
-GNU General Public License v2.
+The MIT License (MIT)
