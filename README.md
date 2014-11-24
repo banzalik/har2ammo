@@ -1,4 +1,7 @@
-# har2ammo [![Build Status](https://secure.travis-ci.org/banzalik/har2ammo.png?branch=master)](http://travis-ci.org/banzalik/har2ammo)
+# har2ammo 
+=============
+[![Build Status][travis-img]][travis-url]
+[![NPM Downloads][downloads-img]][downloads-url]
 
 Генератор паторонов из [.har](http://en.wikipedia.org/wiki/.har) файлов в [ammo.txt](https://yandextank.readthedocs.org/en/latest/tutorial.html#uri-style-uris-in-file) для [yandex-tank](https://github.com/yandex-load/yandex-tank).
 
@@ -57,4 +60,13 @@
 `npm install -g har2ammo`
 
 ## Лицензия
-The MIT License (MIT)
+[The MIT License (MIT)](LICENSE)
+
+
+
+[travis-img]: https://travis-ci.org/banzalik/har2ammo.svg?branch=master
+[travis-url]: https://travis-ci.org/banzalik/har2ammo
+[downloads-img]: https://img.shields.io/npm/dm/har2ammo.svg
+[downloads-url]: https://npmjs.org/package/har2ammo
+[license-img]: https://img.shields.io/npm/l/har2ammo.svg
+[license-url]: LICENSE
