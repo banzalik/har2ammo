@@ -12,7 +12,7 @@ describe('Cookies', function () {
             config = utils.getConfig(test + '.config'),
             input = utils.getHar('ya.ru'),
             output = utils.getOut(test),
-            exec = har2ammo(config + input + output)
+            exec = har2ammo(config + input + output),
             toTest = getResult(test);
 
         assert.equal(etalon, toTest);
@@ -24,7 +24,7 @@ describe('Cookies', function () {
             config = utils.getConfig(test + '.config'),
             input = utils.getHar('ya.ru'),
             output = utils.getOut(test),
-            exec = har2ammo(config + input + output)
+            exec = har2ammo(config + input + output),
             toTest = getResult(test);
 
         assert.equal(etalon, toTest);
@@ -36,7 +36,7 @@ describe('Cookies', function () {
             config = utils.getConfig(test + '.config'),
             input = utils.getHar('ya.ru'),
             output = utils.getOut(test),
-            exec = har2ammo(config + input + output)
+            exec = har2ammo(config + input + output),
             toTest = getResult(test);
 
         assert.equal(etalon, toTest);
@@ -48,7 +48,7 @@ describe('Cookies', function () {
             config = utils.getConfig(test + '.config'),
             input = utils.getHar('ya.ru'),
             output = utils.getOut(test),
-            exec = har2ammo(config + input + output)
+            exec = har2ammo(config + input + output),
             toTest = getResult(test);
 
         assert.equal(etalon, toTest);
@@ -60,7 +60,7 @@ describe('Cookies', function () {
             config = utils.getConfig(test + '.config'),
             input = utils.getHar('ya.ru'),
             output = utils.getOut(test),
-            exec = har2ammo(config + input + output)
+            exec = har2ammo(config + input + output),
             toTest = getResult(test);
 
         assert.equal(etalon, toTest);
