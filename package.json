@@ -40,6 +40,6 @@
     "optionalDependencies": {},
     "devDependencies": {
         "execSync": "~1.0.1-pre",
-        "mocha": "2.*"
+        "mocha": "2.x"
     }
 }
