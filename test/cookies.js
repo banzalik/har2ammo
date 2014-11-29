@@ -6,63 +6,27 @@ var assert = require("assert"),
 
 describe('Cookies', function () {
 
-    it('Cookies on', function () {
-        var test = "ya.ru",
-            etalon = getEtalon(test),
-            config = utils.getConfig(test + '.config'),
-            input = utils.getHar('ya.ru'),
-            output = utils.getOut(test),
-            exec = har2ammo(config + input + output),
-            toTest = getResult(test);
+    it('Cookies on', test('ya.ru'));
 
-        assert.equal(etalon, toTest);
-    })
+    it('Cookies off', test('ya.ru.clearCookies'));
 
-    it('Cookies off', function () {
-        var test = "ya.ru.clearCookies",
-            etalon = getEtalon(test),
-            config = utils.getConfig(test + '.config'),
-            input = utils.getHar('ya.ru'),
-            output = utils.getOut(test),
-            exec = har2ammo(config + input + output),
-            toTest = getResult(test);
+    it('Custom cookies 2', test("ya.ru.customCookies"));
 
-        assert.equal(etalon, toTest);
-    })
+    it('Custom cookies Array once', test('ya.ru.customCookiesArray.1', 'ya.ru.customCookies'));
 
-    it('Custom cookies', function () {
-        var test = "ya.ru.customCookies",
-            etalon = getEtalon(test),
-            config = utils.getConfig(test + '.config'),
-            input = utils.getHar('ya.ru'),
-            output = utils.getOut(test),
-            exec = har2ammo(config + input + output),
-            toTest = getResult(test);
-
-        assert.equal(etalon, toTest);
-    })
-
-    it('Custom cookies Array once', function () {
-        var test = "ya.ru.customCookiesArray.1",
-            etalon = getEtalon('ya.ru.customCookies'),
-            config = utils.getConfig(test + '.config'),
-            input = utils.getHar('ya.ru'),
-            output = utils.getOut(test),
-            exec = har2ammo(config + input + output),
-            toTest = getResult(test);
-
-        assert.equal(etalon, toTest);
-    })
-
-    it('Custom cookies Array', function () {
-        var test = "ya.ru.customCookiesArray",
-            etalon = getEtalon(test),
-            config = utils.getConfig(test + '.config'),
-            input = utils.getHar('ya.ru'),
-            output = utils.getOut(test),
-            exec = har2ammo(config + input + output),
-            toTest = getResult(test);
-
-        assert.equal(etalon, toTest);
-    })
+    it('Custom cookies Array', test("ya.ru.customCookiesArray"));
 });
+
+function test(fileName, etalonFileName) {
+    return function () {
+        var etalon = getEtalon(etalonFileName || fileName),
+            config = utils.getConfig(fileName + '.config'),
+            input = utils.getHar('ya.ru'),
+            output = utils.getOut(fileName),
+            exec = har2ammo(config + input + output),
+            toTest = getResult(fileName);
+
+        assert.equal(etalon, toTest);
+    }
+
+}
