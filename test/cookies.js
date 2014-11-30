@@ -1,8 +1,5 @@
-var assert = require("assert"),
-    utils = require("./helpers.js"),
-    getEtalon = utils.getEtalon,
-    getResult = utils.getResult,
-    har2ammo = utils.har2ammo;
+
+var test = require("./helpers").test;
 
 describe('Cookies', function () {
 
@@ -16,17 +13,3 @@ describe('Cookies', function () {
 
     it('Custom cookies Array', test("ya.ru.customCookiesArray"));
 });
-
-function test(fileName, etalonFileName) {
-    return function () {
-        var etalon = getEtalon(etalonFileName || fileName),
-            config = utils.getConfig(fileName + '.config'),
-            input = utils.getHar('ya.ru'),
-            output = utils.getOut(fileName),
-            exec = har2ammo(config + input + output),
-            toTest = getResult(fileName);
-
-        assert.equal(etalon, toTest);
-    }
-
-}
