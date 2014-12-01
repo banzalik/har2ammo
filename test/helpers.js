@@ -1,12 +1,13 @@
 var exec = require("execSync").exec,
     fs = require('fs'),
+    assert = require("assert"),
     har2ammoPath = "./index.js ";
 
 function getFileContent(path) {
     return fs.readFileSync(path, 'utf8');
 }
 
-module.exports = {
+var helpers = module.exports = {
     getEtalon: function (path) {
         if (!path) {
             return;
@@ -52,5 +53,18 @@ module.exports = {
     },
     cleanN: function (str) {
         return str.replace(/\r?\n|\r/, '')
+    },
+    test: function (fileName, etalonFileName) {
+        return function () {
+            var etalon = helpers.getEtalon(etalonFileName || fileName),
+                config = helpers.getConfig(fileName + '.config'),
+                input = helpers.getHar('ya.ru'),
+                output = helpers.getOut(fileName),
+                exec = helpers.har2ammo(config + input + output),
+                toTest = helpers.getResult(fileName);
+
+            assert.equal(etalon, toTest);
+        }
+
     }
 }
