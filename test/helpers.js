@@ -51,7 +51,7 @@ var helpers = module.exports = {
         }
         return exec(cmd).stdout;
     },
-    cleanN: function (str) {
+    removeLineBrakes: function (str) {
         return str.replace(/\r?\n|\r/, '')
     },
     test: function (fileName, etalonFileName) {
