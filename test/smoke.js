@@ -1,6 +1,6 @@
 var assert = require("assert"),
     helpers = require("./helpers.js"),
-    removeLineBrakes = helpers.removeLineBrakes,
+    removeLineBreaks = helpers.removeLineBreaks,
     getEtalon = helpers.getEtalon,
     har2ammo = helpers.har2ammo;
 
@@ -14,9 +14,9 @@ describe("Help output", function () {
 });
 
 describe('Version', function () {
-    var etalonVersion = removeLineBrakes(getEtalon('version')),
+    var etalonVersion = removeLineBreaks(getEtalon('version')),
         packageVersion = require('../package.json').version,
-        realVersion = removeLineBrakes(har2ammo("-V"));
+        realVersion = removeLineBreaks(har2ammo("-V"));
 
     it("of the package should same as version of etalon", function () {
         assert.equal(etalonVersion, packageVersion);
