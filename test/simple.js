@@ -1,9 +1,3 @@
-var assert = require("assert"),
-    utils = require("./helpers.js"),
-    getEtalon = utils.getEtalon,
-    getResult = utils.getResult,
-    har2ammo = utils.har2ammo;
-
 var test = require('./helpers').test;
 
 describe('Simple', function () {
