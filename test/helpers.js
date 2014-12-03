@@ -1,5 +1,4 @@
-var execSync = require("execSync").exec,
-    exec = require("child_process").execFile,
+var exec = require("child_process").execFile,
     fs = require('fs'),
     assert = require("assert"),
     har2ammoPath = "./index.js";
@@ -42,17 +41,6 @@ var helpers = module.exports = {
             return;
         }
         return " -o test/results/" + path + ".txt"
-    },
-    har2ammoSync: function (params) {
-        if (!params) {
-            params = ''
-        }
-        var cmd = har2ammoPath + params,
-            result = exec(cmd);
-        if (result.code === 1) {
-            throw new Error(result.stdout, cmd);
-        }
-        return execSync(cmd).stdout;
     },
     har2ammo: function (args, callback) {
 
