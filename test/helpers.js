@@ -1,4 +1,5 @@
-var exec = require("execSync").exec,
+var execSync = require("execSync").exec,
+    exec = require("child_process").execFile,
     fs = require('fs'),
     assert = require("assert"),
     har2ammoPath = "./index.js ";
@@ -40,7 +41,7 @@ var helpers = module.exports = {
         }
         return " -o test/results/" + path + ".txt"
     },
-    har2ammo: function (params) {
+    har2ammoSync: function (params) {
         if (!params) {
             params = ''
         }
@@ -49,22 +50,34 @@ var helpers = module.exports = {
         if (result.code === 1) {
             throw new Error(result.stdout, cmd);
         }
-        return exec(cmd).stdout;
+        return execSync(cmd).stdout;
+    },
+    har2ammo: function (args, callback) {
+
+        args = args && args.split(' ') || [];
+
+        exec(har2ammoPath, args, function (error, stdout) {
+            //@todo how about stderr checking?
+            //@todo add status (return) codes checking
+            callback(error, stdout);
+        });
     },
     removeLineBreaks: function (str) {
         return str.replace(/\r?\n|\r/, '')
     },
     test: function (fileName, etalonFileName) {
-        return function () {
+        return function (done) {
             var etalon = helpers.getEtalon(etalonFileName || fileName),
                 config = helpers.getConfig(fileName + '.config'),
                 input = helpers.getHar('ya.ru'),
-                output = helpers.getOut(fileName),
-                exec = helpers.har2ammo(config + input + output),
-                toTest = helpers.getResult(fileName);
+                output = helpers.getOut(fileName);
 
-            assert.equal(etalon, toTest);
+            helpers.har2ammo(config + input + output, function (eror, stdout) {
+                var toTest = helpers.getResult(fileName);
+                assert.equal(etalon, toTest);
+                done();
+            });
         }
 
     }
-}
+};

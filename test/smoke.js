@@ -2,7 +2,7 @@ var assert = require("assert"),
     helpers = require("./helpers.js"),
     removeLineBreaks = helpers.removeLineBreaks,
     getEtalon = helpers.getEtalon,
-    har2ammo = helpers.har2ammo;
+    har2ammo = helpers.har2ammoSync;
 
 describe("Help output", function () {
     var etalonHelp = getEtalon("help"),
