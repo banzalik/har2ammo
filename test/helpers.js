@@ -2,7 +2,7 @@ var execSync = require("execSync").exec,
     exec = require("child_process").execFile,
     fs = require('fs'),
     assert = require("assert"),
-    har2ammoPath = "./index.js ";
+    har2ammoPath = "./index.js";
 
 function getFileContent(path) {
     return fs.readFileSync(path, 'utf8');
@@ -20,8 +20,10 @@ var helpers = module.exports = {
         if (!path) {
             return;
         }
-        var fullPath = "test/results/" + path + ".txt";
-        return getFileContent(fullPath);
+        var fullPath = "test/results/" + path + ".txt",
+            result = getFileContent(fullPath);
+        fs.unlinkSync(fullPath);
+        return result;
     },
     getConfig: function (path) {
         if (!path) {
@@ -72,8 +74,9 @@ var helpers = module.exports = {
                 input = helpers.getHar('ya.ru'),
                 output = helpers.getOut(fileName);
 
-            helpers.har2ammo(config + input + output, function (eror, stdout) {
+            helpers.har2ammo(config + input + output, function (error, stdout) {
                 var toTest = helpers.getResult(fileName);
+                assert.ifError(error);
                 assert.equal(etalon, toTest);
                 done();
             });
