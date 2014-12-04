@@ -5,24 +5,31 @@ var assert = require("assert"),
     har2ammo = helpers.har2ammo;
 
 describe("Help output", function () {
-    var etalonHelp = getEtalon("help"),
-        realHelp = har2ammo();
+    var etalonHelp = getEtalon("help");
 
-    it("should be same as etalon", function () {
-        assert.equal(etalonHelp, realHelp);
+    it("should be same as etalon", function (done) {
+        har2ammo('', function (error, realHelp) {
+            assert.ifError(error);
+            assert.equal(etalonHelp, realHelp);
+            done();
+        });
     })
 });
 
 describe('Version', function () {
-    var etalonVersion = removeLineBreaks(getEtalon('version')),
-        packageVersion = require('../package.json').version,
-        realVersion = removeLineBreaks(har2ammo("-V"));
+    var etalonVersion = removeLineBreaks(getEtalon('version'));
 
     it("of the package should same as version of etalon", function () {
+        var packageVersion = require('../package.json').version;
         assert.equal(etalonVersion, packageVersion);
     });
 
-    it('of the har2ammo executable should be same as version as etalon', function () {
-        assert.equal(etalonVersion, realVersion);
+    it('of the har2ammo executable should be same as version as etalon', function (done) {
+        har2ammo("-V", function (error, output) {
+            assert.ifError(error);
+            var realVersion = removeLineBreaks(output);
+            assert.equal(etalonVersion, realVersion);
+            done();
+        })
     });
 });
