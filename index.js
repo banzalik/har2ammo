@@ -1,20 +1,22 @@
 #!/usr/bin/env node
+/* exported har2ammo, colors */
 var program = require('commander'),
+    colors = require('colors'), // подсветка вывода данных
     config = {
-        "autoTag": true,
-        "host": null,
-        "pathFilterRegexp": false,
-        "clearCookies": false,
-        "customCookies": false,
-        "customHeaders": [{
-            "name": "User-Agent",
-            "value": "yandex-tank yandex-tank/har2ammo"
+        'autoTag': true,
+        'host': null,
+        'pathFilterRegexp': false,
+        'clearCookies': false,
+        'customCookies': false,
+        'customHeaders': [{
+            'name': 'User-Agent',
+            'value': 'yandex-tank yandex-tank/har2ammo'
         }]
-    };
+    },
+    Har2Ammo;
 
-var Har2Ammo = function (program, config) {
+Har2Ammo = function (program, config) {
     var _ = require('lodash'),
-        colors = require('colors'), // подсветка вывода данных
         url = require('url'),
         fs = require('fs'),
         path = require('path');
@@ -33,7 +35,7 @@ var Har2Ammo = function (program, config) {
         this.beforeProcess();
         this.process();
         this.afterProcess();
-    }
+    };
 
     this.checkParams = function () {
         var error;
@@ -52,13 +54,14 @@ var Har2Ammo = function (program, config) {
             console.error(error.red);
             process.exit(1);
         }
-    }
+    };
 
     this.getHAR = function () {
+        var har, error;
         try {
-            var har = this.parseJsonFile(program.input);
+            har = this.parseJsonFile(program.input);
         } catch (e) {
-            var error = "Can't parse HAR file - " + e.message;
+            error = 'Can\'t parse HAR file - ' + e.message;
             console.error(error.red);
             process.exit(2);
         }
@@ -66,16 +69,16 @@ var Har2Ammo = function (program, config) {
         if (har && har.log && har.log.entries && har.log.entries.length) {
             this.har = har.log.entries;
         } else {
-            var error = 'Invalid HAR file.';
+            error = 'Invalid HAR file.';
             console.error(error.red);
             process.exit(2);
         }
-    }
+    };
 
-    this.parseJsonFile = function(filename) {
+    this.parseJsonFile = function (filename) {
         var content = fs.readFileSync(this.pathNormalise(filename), 'utf8');
-            return JSON.parse(content);
-    }
+        return JSON.parse(content);
+    };
 
     this.getConfig = function () {
         if (!program.config) {
@@ -85,12 +88,12 @@ var Har2Ammo = function (program, config) {
 
         var conf = this.parseJsonFile(program.config);
         this.config = _.extend(config, conf);
-    }
+    };
 
     this.pathNormalise = function (filePath) {
         var pwd = process.cwd();
         return path.resolve(pwd, filePath);
-    }
+    };
 
     this.filterHar = function () {
         var newHar = [],
@@ -102,11 +105,14 @@ var Har2Ammo = function (program, config) {
         _.each(this.har, function (item) {
             var host = item.request.url,
                 parsedUrl = url.parse(host),
-                host = parsedUrl.hostname,
                 path = parsedUrl.path;
+
+            host = parsedUrl.hostname;
+
             if (hostFilter && !hostFilter.test(host)) {
                 return;
             }
+
             if (pathFilter && !pathFilter.test(path)) {
                 return;
             }
@@ -114,7 +120,7 @@ var Har2Ammo = function (program, config) {
         });
 
         this.har = newHar;
-    }
+    };
 
     this.getBaseHost = function () {
         var host;
@@ -129,54 +135,54 @@ var Har2Ammo = function (program, config) {
         }
 
         return host;
-    }
+    };
 
     this.process = function () {
 
         if (_.isArray(this.config.customCookies)) {
             var i, length = this.config.customCookies.length;
-            for (i=0; i < length ; i++) {
+            for (i = 0; i < length ; i++) {
                 this.cookieNumber = i;
                 this.processGo();
             }
         } else {
             this.processGo();
         }
-    }
+    };
 
-    this.processGo = function() {
-        var _self = this;
+    this.processGo = function () {
+        var self = this;
         _.forEach(this.har, function (elem) {
             if (elem.request) {
-                _self.processHarItem(elem.request);
+                self.processHarItem(elem.request);
             }
         });
-    }
+    };
 
     this.processHarItem = function (request) {
         var req = this.buildRequests(request);
 
         this.returnData(req);
-    }
+    };
 
     this.absToRelUrl = function (path) {
         var data = url.parse(path);
         return data.path || data.pathname;
-    }
+    };
 
     this.buildRequests = function (request) {
-        var resp, respSize, tag = "", req = [],
+        var resp, respSize, tag = '', req = [],
             method = request.method,
             target = this.absToRelUrl(request.url),
-            httpVersion = request.httpVersion || "HTTP/1.1",
-            self = this;
-        post = '';
+            httpVersion = request.httpVersion || 'HTTP/1.1',
+            self = this,
+            post = '';
 
         req.push(method + ' ' + target + ' ' + httpVersion + '\n');
 
-        if (method === "POST") {
+        if (method === 'POST') {
             if (request.postData && request.postData.text) {
-                req.push('Content-Length: ' + Buffer.byteLength(request.postData.text, 'utf8') + "\n");
+                req.push('Content-Length: ' + Buffer.byteLength(request.postData.text, 'utf8') + '\n');
                 post = request.postData.text;
             } else {
                 req.push('Content-Length: 0\n');
@@ -198,12 +204,12 @@ var Har2Ammo = function (program, config) {
                         } else {
                             cookie = self.config.customCookies[self.cookieNumber];
                         }
-                        string = item.name + ": " + cookie + "\n";
+                        string = item.name + ': ' + cookie + '\n';
                         req.push(string);
                         break;
                     }
                     if (!self.config.clearCookies) {
-                        string = item.name + ": " + item.value + "\n";
+                        string = item.name + ': ' + item.value + '\n';
                         req.push(string);
                         break;
                     }
@@ -211,7 +217,7 @@ var Har2Ammo = function (program, config) {
                 case 'Content-Length':
                     break;
                 default :
-                    string = item.name + ": " + item.value + "\n";
+                    string = item.name + ': ' + item.value + '\n';
                     req.push(string);
                     break;
             }
@@ -225,25 +231,25 @@ var Har2Ammo = function (program, config) {
         resp = this.concatArray(req);
 
         if (this.config.autoTag) {
-            tag = " " + url.parse(request.url).pathname;
+            tag = ' ' + url.parse(request.url).pathname;
         }
 
         respSize = Buffer.byteLength(resp, 'utf8') + tag + '\n';
 
         return respSize + resp;
-    }
+    };
 
     this.concatArray = function (array) {
-        var str = "";
+        var str = '';
         _.each(array, function (elem) {
             str += elem;
         });
         return str;
-    }
+    };
 
     this.ifExistsFile = function (path) {
         return fs.existsSync(path);
-    }
+    };
 
     this.returnData = function (data) {
         if (!program.output) {
@@ -251,16 +257,16 @@ var Har2Ammo = function (program, config) {
         } else {
             fs.appendFileSync(program.output, data);
         }
-    }
+    };
 
     this.beforeProcess = function () {
         if (program.output) {
             fs.writeFileSync(program.output, '');
         }
-    }
+    };
 
     this.afterProcess = function () {
-    }
+    };
 
     this.extend = function (to, from) {
         var resultArray = [];
@@ -277,7 +283,7 @@ var Har2Ammo = function (program, config) {
         resultArray = resultArray.concat(_.compact(from));
 
         return resultArray;
-    }
+    };
 
     this.init();
 };

@@ -1,0 +1,18 @@
+# Для всех файлов используем unix-совместимые переносы строк
+[*]
+end_of_line = lf
+insert_final_newline = true
+charset = utf-8
+trim_trailing_whitespace = false
+insert_final_newline = true
+
+
+# Используем табы для отступов (Не указываем размер)
+[*.js]
+indent_style = space
+indent_size = 4
+
+# Только для файлов package.json or .travis.yml
+[{package.json,.travis.yml}]
+indent_style = space
+indent_size = 2

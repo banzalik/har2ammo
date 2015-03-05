@@ -1,44 +1,49 @@
 {
-    "name": "har2ammo",
-    "description": "HAR to ammo.txt",
-    "keywords": "yandex-tank, har2ammo, ammo.txt, har",
-    "version": "0.1.5",
-    "homepage": "https://github.com/banzalik/har2ammo",
-    "author": "Aleksandr Boichenko <banzalik@gmail.com> (http://github.com/banzalik)",
-    "maintainers": [],
-    "contributors": [],
-    "bin": {
-        "har2ammo": "./index.js"
-    },
-    "bugs": {
-        "url": "https://github.com/banzalik/har2ammo/issues"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/banzalik/har2ammo.git"
-    },
-    "scripts": {
-        "test": "node_modules/.bin/mocha  --reporter spec --bail --check-leaks test/"
-    },
-    "dependencies": {
-        "lodash": ">= 2.3.0",
-        "commander": ">= 2.0.0",
-        "colors": ">= 0.6.2"
-    },
-    "files": [
-        "index.js"
-    ],
-    "engines": {
-        "node": ">= 0.8.0"
-    },
-    "licenses": [
-        {
-            "type": "GNU GENERAL PUBLIC LICENSE",
-            "url": "https://raw.github.com/banzalik/har2ammo/master/LICENSE"
-        }
-    ],
-    "optionalDependencies": {},
-    "devDependencies": {
-        "mocha": "2.x"
+  "name": "har2ammo",
+  "description": "HAR to ammo.txt",
+  "keywords": "yandex-tank, har2ammo, ammo.txt, har",
+  "version": "0.1.5",
+  "homepage": "https://github.com/banzalik/har2ammo",
+  "author": "Aleksandr Boichenko <banzalik@gmail.com> (http://github.com/banzalik)",
+  "maintainers": [],
+  "contributors": [],
+  "bin": {
+    "har2ammo": "./index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/banzalik/har2ammo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/banzalik/har2ammo.git"
+  },
+  "scripts": {
+    "test": "npm run-script mocha && npm run-script jscs && npm run-script jshint",
+    "mocha": "node_modules/.bin/mocha --reporter spec --bail --check-leaks test/",
+    "jshint": "node_modules/.bin/jshint index.js",
+    "jscs": "node_modules/.bin/jscs index.js"
+  },
+  "dependencies": {
+    "lodash": ">= 3.3.1",
+    "commander": ">= 2.6.0",
+    "colors": ">= 1.0.3"
+  },
+  "files": [
+    "index.js"
+  ],
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "licenses": [
+    {
+      "type": "GNU GENERAL PUBLIC LICENSE",
+      "url": "https://raw.github.com/banzalik/har2ammo/master/LICENSE"
     }
+  ],
+  "optionalDependencies": {},
+  "devDependencies": {
+    "jscs": ">= 1.11.3",
+    "jshint": "^2.6.3",
+    "mocha": "2.x"
+  }
 }
