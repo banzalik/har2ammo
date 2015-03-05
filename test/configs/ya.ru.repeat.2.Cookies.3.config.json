@@ -3,10 +3,13 @@
     "host": null,
     "pathFilterRegexp": false,
     "clearCookies": false,
+    "customCookies": false,
     "replaceDateInURL": false,
-    "repeat": 0,
+    "repeat": 2,
     "customCookies": [
-        "testcustomCookies=1"
+        "testcustomCookies=1",
+        "testcustomCookies=2",
+        "testcustomCookies=3"
     ],
     "customHeaders": [{
 		"name": "User-Agent",

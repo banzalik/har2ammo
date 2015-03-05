@@ -8,6 +8,8 @@ var program = require('commander'),
         'pathFilterRegexp': false,
         'clearCookies': false,
         'customCookies': false,
+        'replaceDateInURL': false,
+        'repeat': 0,
         'customHeaders': [{
             'name': 'User-Agent',
             'value': 'yandex-tank yandex-tank/har2ammo'
@@ -138,6 +140,14 @@ Har2Ammo = function (program, config) {
     };
 
     this.process = function () {
+        var i = 0;
+        do {
+            this.processCustomCookies();
+            i++;
+        } while (i < parseInt(this.config.repeat));
+    };
+
+    this.processCustomCookies = function () {
 
         if (_.isArray(this.config.customCookies)) {
             var i, length = this.config.customCookies.length;
@@ -166,8 +176,23 @@ Har2Ammo = function (program, config) {
     };
 
     this.absToRelUrl = function (path) {
-        var data = url.parse(path);
-        return data.path || data.pathname;
+        var data = url.parse(path),
+            newPath = data.path || data.pathname;
+
+        return this.replaceDate(newPath, this.config.replaceDateInURL);
+    };
+
+    this.replaceDate = function (str, config) {
+        if (config) {
+            var toReplace;
+            if (config === true) {
+                toReplace = Date.now();
+            } else {
+                toReplace = config;
+            }
+            return str.replace(/\d{13}/g, toReplace);
+        }
+        return str;
     };
 
     this.buildRequests = function (request) {

@@ -3,11 +3,9 @@
     "host": null,
     "pathFilterRegexp": false,
     "clearCookies": false,
-    "replaceDateInURL": false,
+    "customCookies": false,
+    "replaceDateInURL": "123456789",
     "repeat": 0,
-    "customCookies": [
-        "testcustomCookies=1"
-    ],
     "customHeaders": [{
 		"name": "User-Agent",
         "value": "yandex-tank yandex-tank/har2ammo"

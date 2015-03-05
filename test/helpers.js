@@ -55,11 +55,11 @@ var helpers = module.exports = {
     removeLineBreaks: function (str) {
         return str.replace(/\r?\n|\r/, '')
     },
-    test: function (fileName, etalonFileName) {
+    test: function (fileName, etalonFileName, harfile) {
         return function (done) {
             var etalon = helpers.getEtalon(etalonFileName || fileName),
                 config = helpers.getConfig(fileName + '.config'),
-                input = helpers.getHar('ya.ru'),
+                input = helpers.getHar( harfile ? harfile : 'ya.ru'),
                 output = helpers.getOut(fileName);
 
             helpers.har2ammo(config + input + output, function (error, stdout) {

@@ -4,6 +4,8 @@
     "pathFilterRegexp": false,
     "clearCookies": false,
     "customCookies": "testcustomCookies=1",
+    "replaceDateInURL": false,
+    "repeat": 0,
     "customHeaders": [{
 		"name": "User-Agent",
         "value": "yandex-tank yandex-tank/har2ammo"

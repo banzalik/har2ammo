@@ -4,5 +4,7 @@
     "pathFilterRegexp": false,
     "clearCookies": true,
     "customCookies": false,
+    "replaceDateInURL": false,
+    "repeat": 0,
     "customHeaders": false
 }
