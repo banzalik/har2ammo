@@ -1,7 +1,7 @@
 
 var test = require("./helpers").test;
 
-describe('Dates', function () {
+describe('Repeat', function () {
 
     it('Repeat 1', test('ya.ru.repeat.1'));
 
