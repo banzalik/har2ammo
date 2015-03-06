@@ -3,7 +3,7 @@
 [![Build Status][travis-img]][travis-url]
 [![NPM Downloads][downloads-img]][downloads-url]
 
-Генератор паторонов из [.har](http://en.wikipedia.org/wiki/.har) файлов в [ammo.txt](https://yandextank.readthedocs.org/en/latest/tutorial.html#uri-style-uris-in-file) для [yandex-tank](https://github.com/yandex-load/yandex-tank).
+Генератор патронов из [.har](http://en.wikipedia.org/wiki/.har) файлов в [ammo.txt](https://yandextank.readthedocs.org/en/latest/tutorial.html#uri-style-uris-in-file) для [yandex-tank](https://github.com/yandex-load/yandex-tank).
 
 ## Возможности
 
