@@ -182,13 +182,16 @@ Har2Ammo = function (program, config) {
         return this.replaceDate(newPath, this.config.replaceDateInURL);
     };
 
-    this.replaceDate = function (str, config) {
+    this.replaceDate = function (str, config, hasTag) {
         if (config) {
             var toReplace;
             if (config === true) {
                 toReplace = Date.now();
             } else {
                 toReplace = config;
+            }
+            if (hasTag) {
+                toReplace = '';
             }
             return str.replace(/\d{13}/g, toReplace);
         }
@@ -256,7 +259,7 @@ Har2Ammo = function (program, config) {
         resp = this.concatArray(req);
 
         if (this.config.autoTag) {
-            tag = ' ' + url.parse(request.url).pathname;
+            tag = ' ' + this.replaceDate(url.parse(request.url).pathname, this.config.replaceDateInURL, true);
         }
 
         respSize = Buffer.byteLength(resp, 'utf8') + tag + '\n';
@@ -314,7 +317,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.1.6')
+    .version('0.1.7')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
