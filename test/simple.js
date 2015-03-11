@@ -9,4 +9,8 @@ describe('Simple', function () {
     it('Default yandex.ru', test('ya.ru.host.yandex'));
 
     it('Default yandex.ru/system/', test('ya.ru.host.yandex.regexp'));
+
+    it('Default exclude path', test('ya.ru.host.yandex.regexpExclude'));
+
+    it('Default exclude host', test('ya.ru.host.yandex.excludeHostRegexp'));
 });

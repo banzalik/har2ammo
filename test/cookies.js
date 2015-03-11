@@ -1,5 +1,5 @@
 
-var test = require("./helpers").test;
+var test = require('./helpers').test;
 
 describe('Cookies', function () {
 
@@ -7,9 +7,9 @@ describe('Cookies', function () {
 
     it('Cookies off', test('ya.ru.clearCookies'));
 
-    it('Custom cookies 2', test("ya.ru.customCookies"));
+    it('Custom cookies 2', test('ya.ru.customCookies'));
 
     it('Custom cookies Array once', test('ya.ru.customCookiesArray.1', 'ya.ru.customCookies'));
 
-    it('Custom cookies Array', test("ya.ru.customCookiesArray"));
+    it('Custom cookies Array', test('ya.ru.customCookiesArray'));
 });

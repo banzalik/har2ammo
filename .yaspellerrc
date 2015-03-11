@@ -1,0 +1,11 @@
+{
+  "excludeFiles": [
+    ".git",
+    "libs",
+    "node_modules"
+  ],
+  "lang": "ru",
+  "fileExtensions": [
+    ".md"
+  ]
+}

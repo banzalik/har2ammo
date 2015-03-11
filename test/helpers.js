@@ -1,7 +1,7 @@
-var exec = require("child_process").execFile,
+var exec = require('child_process').execFile,
     fs = require('fs'),
-    assert = require("assert"),
-    har2ammoPath = "./index.js";
+    assert = require('assert'),
+    har2ammoPath = './index.js';
 
 function getFileContent(path) {
     return fs.readFileSync(path, 'utf8');
@@ -12,14 +12,14 @@ var helpers = module.exports = {
         if (!path) {
             return;
         }
-        var fullPath = "test/etalons/" + path + ".txt";
+        var fullPath = 'test/etalons/' + path + '.txt';
         return getFileContent(fullPath);
     },
     getResult: function (path) {
         if (!path) {
             return;
         }
-        var fullPath = "test/results/" + path + ".txt",
+        var fullPath = 'test/results/' + path + '.txt',
             result = getFileContent(fullPath);
         fs.unlinkSync(fullPath);
         return result;
@@ -28,19 +28,19 @@ var helpers = module.exports = {
         if (!path) {
             return;
         }
-        return " -c test/configs/" + path + ".json"
+        return ' -c test/configs/' + path + '.json';
     },
     getHar: function (path) {
         if (!path) {
             return;
         }
-        return " -i test/har/" + path + ".har"
+        return ' -i test/har/' + path + '.har';
     },
     getOut: function (path) {
         if (!path) {
             return;
         }
-        return " -o test/results/" + path + ".txt"
+        return ' -o test/results/' + path + '.txt';
     },
     har2ammo: function (args, callback) {
 
@@ -53,7 +53,7 @@ var helpers = module.exports = {
         });
     },
     removeLineBreaks: function (str) {
-        return str.replace(/\r?\n|\r/, '')
+        return str.replace(/\r?\n|\r/, '');
     },
     test: function (fileName, etalonFileName, harfile) {
         return function (done) {
@@ -62,13 +62,13 @@ var helpers = module.exports = {
                 input = helpers.getHar( harfile ? harfile : 'ya.ru'),
                 output = helpers.getOut(fileName);
 
-            helpers.har2ammo(config + input + output, function (error, stdout) {
+            helpers.har2ammo(config + input + output, function (error) {
                 var toTest = helpers.getResult(fileName);
                 assert.ifError(error);
                 assert.equal(etalon, toTest);
                 done();
             });
-        }
+        };
 
     }
 };

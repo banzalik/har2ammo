@@ -1,4 +1,4 @@
-var test = require("./helpers").test;
+var test = require('./helpers').test;
 
 describe('Headers', function () {
 

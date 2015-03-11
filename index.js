@@ -5,7 +5,9 @@ var program = require('commander'),
     config = {
         'autoTag': true,
         'host': null,
+        'excludeHostRegexp': false,
         'pathFilterRegexp': false,
+        'excludePathFilterRegexp': false,
         'clearCookies': false,
         'customCookies': false,
         'replaceDateInURL': false,
@@ -102,7 +104,12 @@ Har2Ammo = function (program, config) {
             hostFilterEnabled = !(this.config.host === false || this.config.host === 'false'),
             hostFilter = hostFilterEnabled && new RegExp(this.host),
             pathFilterEnabled = !(!this.config.pathFilterRegexp && this.config.pathFilterRegexp !== 'false'),
-            pathFilter = pathFilterEnabled && new RegExp(this.config.pathFilterRegexp);
+            pathFilter = pathFilterEnabled && new RegExp(this.config.pathFilterRegexp),
+            excludeHostRegexpEnabled = !(!this.config.excludeHostRegexp && this.config.excludeHostRegexp !== 'false'),
+            excludeHostRegexp = excludeHostRegexpEnabled && new RegExp(this.config.excludeHostRegexp),
+            excludePathFilterRegexpEnabled = !(!this.config.excludePathFilterRegexp &&
+                this.config.excludePathFilterRegexp !== 'false'),
+            excludePathFilterRegexp = excludePathFilterRegexpEnabled && new RegExp(this.config.excludePathFilterRegexp);
 
         _.each(this.har, function (item) {
             var host = item.request.url,
@@ -115,9 +122,18 @@ Har2Ammo = function (program, config) {
                 return;
             }
 
+            if (excludeHostRegexp && excludeHostRegexp.test(host)) {
+                return;
+            }
+
             if (pathFilter && !pathFilter.test(path)) {
                 return;
             }
+
+            if (excludePathFilterRegexp && excludePathFilterRegexp.test(path)) {
+                return;
+            }
+
             newHar.push(item);
         });
 
@@ -317,7 +333,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.1.7')
+    .version('0.2.0')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')

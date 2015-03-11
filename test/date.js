@@ -1,5 +1,5 @@
 
-var test = require("./helpers").test;
+var test = require('./helpers').test;
 
 describe('Dates', function () {
 
@@ -8,5 +8,5 @@ describe('Dates', function () {
     it('Date Custom', test('ya.ru.dateCustom', 'ya.ru.dateCustom', 'ya.ru.date'));
 
     it('Date Custom', test('ya.ru.dateCustom', 'ya.ru.dateCustom', 'ya.ru.date'));
-    
+
 });
