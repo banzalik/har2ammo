@@ -22,7 +22,8 @@
     "mocha": "node_modules/.bin/mocha --reporter spec --bail --check-leaks test/",
     "jshint": "node_modules/.bin/jshint index.js test/",
     "jscs": "node_modules/.bin/jscs index.js test/",
-    "grammar": "node_modules/.bin/yaspeller README.md"
+    "grammar": "node_modules/.bin/yaspeller README.md",
+    "publish": "npm publish ./"
   },
   "dependencies": {
     "lodash": ">= 3.3.1",
