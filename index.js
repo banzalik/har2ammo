@@ -15,19 +15,37 @@ var program = require('commander'),
         'customHeaders': [{
             'name': 'User-Agent',
             'value': 'yandex-tank yandex-tank/har2ammo'
-        }]
-    },
-    Har2Ammo;
+        }],
+        'replaceData': {
+            headers: false,
+            content: false,
+            cookies: false,
+            every: false
+        }
+    }, Har2Ammo;
 
 Har2Ammo = function (program, config) {
     var _ = require('lodash'),
         url = require('url'),
         fs = require('fs'),
-        path = require('path');
+        Chance = require('chance'),
+        chance = new Chance(),
+        path = require('path'),
+        hasRepeat = false,
+        configLibs = {
+            chance: chance,
+            _: _
+        };
 
     this.har = null;
     this.host = null;
     this.cookieNumber = null;
+    this.log = {
+        ammos: 0,
+        totalAmmos: 0,
+        loop: 0,
+        config: {}
+    };
 
     this.init = function () {
 
@@ -84,14 +102,20 @@ Har2Ammo = function (program, config) {
         return JSON.parse(content);
     };
 
+    this.getConfigFile = function (filename) {
+        return require(this.pathNormalise(filename));
+    };
+
     this.getConfig = function () {
         if (!program.config) {
             this.config = config;
             return;
         }
 
-        var conf = this.parseJsonFile(program.config);
+        var conf = this.getConfigFile(program.config);
         this.config = _.extend(config, conf);
+        this.log.config = this.config;
+        //console.log(this.config);
     };
 
     this.pathNormalise = function (filePath) {
@@ -108,7 +132,7 @@ Har2Ammo = function (program, config) {
             excludeHostRegexpEnabled = !(!this.config.excludeHostRegexp && this.config.excludeHostRegexp !== 'false'),
             excludeHostRegexp = excludeHostRegexpEnabled && new RegExp(this.config.excludeHostRegexp),
             excludePathFilterRegexpEnabled = !(!this.config.excludePathFilterRegexp &&
-                this.config.excludePathFilterRegexp !== 'false'),
+            this.config.excludePathFilterRegexp !== 'false'),
             excludePathFilterRegexp = excludePathFilterRegexpEnabled && new RegExp(this.config.excludePathFilterRegexp);
 
         _.each(this.har, function (item) {
@@ -158,8 +182,12 @@ Har2Ammo = function (program, config) {
     this.process = function () {
         var i = 0;
         do {
+            if (i && !hasRepeat) {
+                hasRepeat = true;
+            }
             this.processCustomCookies();
             i++;
+            this.log.loop = i;
         } while (i < parseInt(this.config.repeat));
     };
 
@@ -167,7 +195,7 @@ Har2Ammo = function (program, config) {
 
         if (_.isArray(this.config.customCookies)) {
             var i, length = this.config.customCookies.length;
-            for (i = 0; i < length ; i++) {
+            for (i = 0; i < length; i++) {
                 this.cookieNumber = i;
                 this.processGo();
             }
@@ -187,7 +215,10 @@ Har2Ammo = function (program, config) {
 
     this.processHarItem = function (request) {
         var req = this.buildRequests(request);
-
+        if (!hasRepeat) {
+            this.log.ammos++;
+        }
+        this.log.totalAmmos++;
         this.returnData(req);
     };
 
@@ -226,8 +257,8 @@ Har2Ammo = function (program, config) {
 
         if (method === 'POST') {
             if (request.postData && request.postData.text) {
-                req.push('Content-Length: ' + Buffer.byteLength(request.postData.text, 'utf8') + '\n');
-                post = request.postData.text;
+                post = this.replaceContent(request.postData.text);
+                req.push('Content-Length: ' + Buffer.byteLength(post, 'utf8') + '\n');
             } else {
                 req.push('Content-Length: 0\n');
             }
@@ -255,6 +286,7 @@ Har2Ammo = function (program, config) {
                     if (!self.config.clearCookies) {
                         string = item.name + ': ' + item.value + '\n';
                         req.push(string);
+                        string = self.replaceCookies(string);
                         break;
                     }
                     break;
@@ -262,6 +294,7 @@ Har2Ammo = function (program, config) {
                     break;
                 default :
                     string = item.name + ': ' + item.value + '\n';
+                    string = self.replaceHeaders(string);
                     req.push(string);
                     break;
             }
@@ -310,6 +343,67 @@ Har2Ammo = function (program, config) {
     };
 
     this.afterProcess = function () {
+        if (program.log) {
+            fs.writeFileSync(program.log, JSON.stringify(this.log));
+        }
+    };
+
+    this.replaceHeaders = function (data) {
+        var replaceConfig = this.config.replaceData;
+        return this.replaceEvery(this.replaceData(data, replaceConfig));
+    };
+
+    this.replaceContent = function (data) {
+        var replaceConfig = this.config.replaceContent;
+        return this.replaceEvery(this.replaceData(data, replaceConfig));
+    };
+
+    this.replaceCookies = function (data) {
+        var replaceConfig = this.config.replaceCookies;
+        return this.replaceEvery(this.replaceData(data, replaceConfig));
+
+    };
+
+    this.replaceEvery = function (data) {
+        var replaceConfig = this.config.replaceEvery;
+        return this.replaceData(data, replaceConfig);
+    };
+
+    this.replaceData = function (data, replaceConfig) {
+        if (!replaceConfig || !replaceConfig.headers) {
+            return data;
+        }
+        var headersConfig = replaceConfig.headers,
+            self = this,
+            localData = data;
+        if (_.isArray(headersConfig)) {
+            _.forEach(headersConfig, function (dataItem) {
+                localData = self.replaceWorker(dataItem, localData);
+            });
+        } else if (_.isObject(headersConfig)) {
+            localData = self.replaceWorker(headersConfig, localData);
+        }
+        return localData;
+    };
+
+    this.replaceWorker = function (dataItem, localData) {
+        var rgx;
+        if (_.isString(dataItem.match)) {
+            rgx = new RegExp(_.escapeRegExp(dataItem.match));
+        } else if (_.isRegExp(dataItem.match)) {
+            rgx = new RegExp(dataItem.match);
+        } else {
+            return localData;
+        }
+        if (_.isString(dataItem.data)) {
+            return localData.replace(rgx, dataItem.data);
+        } else if (_.isFunction(dataItem.data)) {
+            var toReplace = dataItem.data(localData, configLibs);
+            if (_.isString(toReplace)) {
+                return localData.replace(rgx, toReplace);
+            }
+        }
+        return localData;
     };
 
     this.extend = function (to, from) {
@@ -333,11 +427,12 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.2.0')
+    .version('0.3.0')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
     .option('-c, --config <file> [required]', 'parh to config file')
+    .option('-l, --log <file>', 'parh to write log file')
     .parse(process.argv);
 
 program.on('--help', function () {

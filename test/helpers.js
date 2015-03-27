@@ -28,6 +28,9 @@ var helpers = module.exports = {
         if (!path) {
             return;
         }
+        if (path.indexOf('.js') !== -1) {
+            return ' -c test/configs/' + path ;
+        }
         return ' -c test/configs/' + path + '.json';
     },
     getHar: function (path) {
@@ -55,12 +58,14 @@ var helpers = module.exports = {
     removeLineBreaks: function (str) {
         return str.replace(/\r?\n|\r/, '');
     },
-    test: function (fileName, etalonFileName, harfile) {
+    test: function (fileName, etalonFileName, harfile, hasJs) {
         return function (done) {
             var etalon = helpers.getEtalon(etalonFileName || fileName),
-                config = helpers.getConfig(fileName + '.config'),
+                config = helpers.getConfig(fileName + '.config' + (hasJs ? '.js' : '')),
                 input = helpers.getHar( harfile ? harfile : 'ya.ru'),
                 output = helpers.getOut(fileName);
+
+            //console.log('config', config + input + output);
 
             helpers.har2ammo(config + input + output, function (error) {
                 var toTest = helpers.getResult(fileName);

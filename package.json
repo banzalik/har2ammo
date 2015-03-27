@@ -2,7 +2,7 @@
   "name": "har2ammo",
   "description": "HAR to ammo.txt",
   "keywords": "yandex-tank, har2ammo, ammo.txt, har",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "homepage": "https://github.com/banzalik/har2ammo",
   "author": "Aleksandr Boichenko <banzalik@gmail.com> (http://github.com/banzalik)",
   "maintainers": [],
@@ -26,9 +26,10 @@
     "publish": "npm publish ./"
   },
   "dependencies": {
-    "lodash": ">= 3.3.1",
+    "chance": ">= 0.7.3",
+    "colors": ">= 1.0.3",
     "commander": ">= 2.6.0",
-    "colors": ">= 1.0.3"
+    "lodash": ">= 3.6.0"
   },
   "files": [
     "index.js"

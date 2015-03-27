@@ -9,6 +9,7 @@
     -o, --output <file> [required]  path to ammo.txt file
     -h, --host <hostname>           base host, strong val
     -c, --config <file> [required]  parh to config file
+    -l, --log <file>                parh to write log file
 
   Examples:
 
