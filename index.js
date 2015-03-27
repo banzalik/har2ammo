@@ -349,39 +349,38 @@ Har2Ammo = function (program, config) {
     };
 
     this.replaceHeaders = function (data) {
-        var replaceConfig = this.config.replaceData;
+        var replaceConfig = this.config.replaceData.headers;
         return this.replaceEvery(this.replaceData(data, replaceConfig));
     };
 
     this.replaceContent = function (data) {
-        var replaceConfig = this.config.replaceContent;
+        var replaceConfig = this.config.replaceData.content;
         return this.replaceEvery(this.replaceData(data, replaceConfig));
     };
 
     this.replaceCookies = function (data) {
-        var replaceConfig = this.config.replaceCookies;
+        var replaceConfig = this.config.replaceData.cookies;
         return this.replaceEvery(this.replaceData(data, replaceConfig));
 
     };
 
     this.replaceEvery = function (data) {
-        var replaceConfig = this.config.replaceEvery;
+        var replaceConfig = this.config.replaceData.every;
         return this.replaceData(data, replaceConfig);
     };
 
     this.replaceData = function (data, replaceConfig) {
-        if (!replaceConfig || !replaceConfig.headers) {
+        if (!replaceConfig) {
             return data;
         }
-        var headersConfig = replaceConfig.headers,
-            self = this,
+        var self = this,
             localData = data;
-        if (_.isArray(headersConfig)) {
-            _.forEach(headersConfig, function (dataItem) {
+        if (_.isArray(replaceConfig)) {
+            _.forEach(replaceConfig, function (dataItem) {
                 localData = self.replaceWorker(dataItem, localData);
             });
-        } else if (_.isObject(headersConfig)) {
-            localData = self.replaceWorker(headersConfig, localData);
+        } else if (_.isObject(replaceConfig)) {
+            localData = self.replaceWorker(replaceConfig, localData);
         }
         return localData;
     };
@@ -427,7 +426,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.0')
+    .version('0.3.1')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
