@@ -1,4 +1,4 @@
-331 /
+331 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -11,7 +11,7 @@ Connection: keep-alive
 
 
 
-331 /
+331 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -24,7 +24,7 @@ Connection: keep-alive
 
 
 
-331 /
+331 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru

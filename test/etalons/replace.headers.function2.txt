@@ -1,4 +1,4 @@
-446 /index.html
+446 _index_html
 GET /index.html HTTP/1.1
 Accept-Encoding: gzip, deflate, sdch
 Host: localhost
@@ -12,7 +12,7 @@ If-Modified-Since: Fri, 27 Mar 2015 08:21:35 GMT
 
 
 
-586 /post.html
+586 _post_html
 GET /post.html?password=123 HTTP/1.1
 Accept-Encoding: gzip, deflate, sdch
 Host: localhost
@@ -27,7 +27,7 @@ Cache-Control: max-age=0
 
 
 
-561 /post.html
+561 _post_html
 POST /post.html HTTP/1.1
 Content-Length: 17
 Origin: http://localhost

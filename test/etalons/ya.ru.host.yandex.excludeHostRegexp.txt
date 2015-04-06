@@ -1,4 +1,4 @@
-341 /
+341 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -11,7 +11,7 @@ Connection: keep-alive
 
 
 
-618 /su/
+618 _su_
 GET /su/ HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: kiks.yandex.ru
@@ -25,7 +25,7 @@ Cache-Control: max-age=0
 
 
 
-601 /watch/723233
+601 _watch_723233
 GET /watch/723233 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: mc.yandex.ru
@@ -39,7 +39,7 @@ Cache-Control: max-age=0
 
 
 
-453 /jquery/2.1.0/jquery.min.js
+453 _jquery_2_1_0_jquery_min_js
 GET /jquery/2.1.0/jquery.min.js HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: yandex.st
@@ -54,7 +54,7 @@ Referer: http://ya.ru/
 
 
 
-562 /data/mail.js
+562 _data_mail_js
 GET /data/mail.js?yaru=y HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: www.yandex.ru
@@ -68,7 +68,7 @@ Cache-Control: max-age=0
 
 
 
-459 /V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0
+459 _V13a****yandex_ru_ru_CP1251_tmsec=yandex_ya_0
 GET /V13a****yandex_ru/ru/CP1251/tmsec=yandex_ya/0 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: www.tns-counter.ru
@@ -82,7 +82,7 @@ Cache-Control: max-age=0
 
 
 
-680 /system/fc06.html
+680 _system_fc06_html
 GET /system/fc06.html HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: kiks.yandex.ru
@@ -97,7 +97,7 @@ Cache-Control: max-age=0
 
 
 
-701 /suggest-ya.cgi
+701 _suggest-ya_cgi
 GET /suggest-ya.cgi?callback=jQuery21005751246530562639_1406133337882&v=4&srv=morda_yaru&wiz=TrWth&fact=1&lr=213&icon=1&hl=1&html=1&part=&pos=0&_=1406133337883 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: suggest.yandex.ru
@@ -111,7 +111,7 @@ Cache-Control: max-age=0
 
 
 
-33 /system/fc06.swf
+33 _system_fc06_swf
 GET /system/fc06.swf HTTP/1.1
 
 

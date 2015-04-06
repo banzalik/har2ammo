@@ -1,4 +1,4 @@
-592 /system/fc06.html
+592 _system_fc06_html
 GET /system/fc06.html HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: kiks.yandex.ru
@@ -13,7 +13,7 @@ Cache-Control: max-age=0
 
 
 
-33 /system/fc06.swf
+33 _system_fc06_swf
 GET /system/fc06.swf HTTP/1.1
 
 

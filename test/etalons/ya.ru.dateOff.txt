@@ -1,4 +1,4 @@
-355 /
+355 _
 GET /?1425564838850 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
