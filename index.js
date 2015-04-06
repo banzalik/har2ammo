@@ -309,7 +309,7 @@ Har2Ammo = function (program, config) {
 
         if (this.config.autoTag) {
             tag = ' ' + this.replaceDate(url.parse(request.url).pathname, this.config.replaceDateInURL, true)
-                .replace(/\.|\//g, '_').replace(/\s__/g, '_');
+                .replace(/\.|\//g, '_').replace(/^__/g, '_');
         }
 
         respSize = Buffer.byteLength(resp, 'utf8') + tag + '\n';
@@ -427,7 +427,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.3')
+    .version('0.3.4')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
