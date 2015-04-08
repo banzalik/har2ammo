@@ -11,7 +11,6 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-
 601 _watch_723233
 GET /watch/723233 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
@@ -25,7 +24,6 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-
 562 _data_mail_js
 GET /data/mail.js?yaru=y HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
@@ -37,7 +35,6 @@ Referer: http://ya.ru/
 Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yandexuid=7824958081406133331
 Connection: keep-alive
 Cache-Control: max-age=0
-
 
 
 680 _system_fc06_html
@@ -54,7 +51,6 @@ If-Modified-Since: Thu, 03 Dec 2009 15:22:16 GMT
 Cache-Control: max-age=0
 
 
-
 701 _suggest-ya_cgi
 GET /suggest-ya.cgi?callback=jQuery21005751246530562639_1406133337882&v=4&srv=morda_yaru&wiz=TrWth&fact=1&lr=213&icon=1&hl=1&html=1&part=&pos=0&_=1406133337883 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
@@ -68,9 +64,7 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-
 33 _system_fc06_swf
 GET /system/fc06.swf HTTP/1.1
-
 
 

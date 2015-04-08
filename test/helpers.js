@@ -8,11 +8,12 @@ function getFileContent(path) {
 }
 
 var helpers = module.exports = {
+    replaceEtalon: false,
     getEtalon: function (path) {
         if (!path) {
             return;
         }
-        var fullPath = 'test/etalons/' + path + '.txt';
+        var fullPath = helpers.getEtalonPath(path);
         return getFileContent(fullPath);
     },
     getResult: function (path) {
@@ -58,17 +59,22 @@ var helpers = module.exports = {
     removeLineBreaks: function (str) {
         return str.replace(/\r?\n|\r/, '');
     },
+    getEtalonPath: function (path) {
+        return 'test/etalons/' + path + '.txt';
+    },
     test: function (fileName, etalonFileName, harfile, hasJs) {
         return function (done) {
             var etalon = helpers.getEtalon(etalonFileName || fileName),
                 config = helpers.getConfig(fileName + '.config' + (hasJs ? '.js' : '')),
                 input = helpers.getHar( harfile ? harfile : 'ya.ru'),
-                output = helpers.getOut(fileName);
-
-            //console.log('config', config + input + output);
+                output = helpers.getOut(fileName),
+                etalonPath = helpers.getEtalonPath(etalonFileName || fileName);
 
             helpers.har2ammo(config + input + output, function (error) {
                 var toTest = helpers.getResult(fileName);
+                if (helpers.replaceEtalon) {
+                    fs.writeFileSync(etalonPath, toTest);
+                }
                 assert.ifError(error);
                 assert.equal(etalon, toTest);
                 done();

@@ -11,7 +11,6 @@ Connection: keep-alive
 If-Modified-Since: Fri, 27 Mar 2015 08:21:35 GMT
 
 
-
 580 _post_html
 GET /post.html?password=123 HTTP/1.1
 Accept-Encoding: gzip, deflate, sdch
@@ -24,7 +23,6 @@ If-None-Match: "4807098-0-Fri Mar 27 2015 10:17:45 GMT+0200 (EET)"
 Connection: keep-alive
 If-Modified-Since: Fri, 27 Mar 2015 08:17:45 GMT
 Cache-Control: max-age=0
-
 
 
 555 _post_html
@@ -42,4 +40,3 @@ Referer: http://localhost/index.html
 Connection: keep-alive
 
 username=Hello%21
-
