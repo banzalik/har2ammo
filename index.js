@@ -301,9 +301,12 @@ Har2Ammo = function (program, config) {
 
         });
 
-        //req.push('\n');
-        req.push(post);
         req.push('\r\n');
+        if (method === 'POST') {
+            req.push(post);
+        } else {
+            req.push('\r\n');
+        }
 
         resp = this.concatArray(req);
 
@@ -427,7 +430,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.6')
+    .version('0.3.7')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')

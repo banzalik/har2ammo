@@ -1,4 +1,4 @@
-455 _index_html
+457 _index_html
 GET /index.html HTTP/1.1
 Accept-Encoding: gzip, deflate, sdch
 Host: localhost
@@ -10,7 +10,8 @@ If-None-Match: "4807605-197-Fri Mar 27 2015 10:21:35 GMT+0200 (EET)"
 Connection: keep-alive
 If-Modified-Since: Fri, 27 Mar 2015 08:21:35 GMT
 
-590 _post_html
+
+592 _post_html
 GET /post.html?password=123 HTTP/1.1
 Accept-Encoding: gzip, deflate, sdch
 Host: localhost
@@ -22,6 +23,7 @@ If-None-Match: "4807098-0-Fri Mar 27 2015 10:17:45 GMT+0200 (EET)"
 Connection: keep-alive
 If-Modified-Since: Fri, 27 Mar 2015 08:17:45 GMT
 Cache-Control: max-age=0
+
 
 566 _post_html
 POST /post.html HTTP/1.1
@@ -36,4 +38,5 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0
 Cache-Control: max-age=0
 Referer: http://localhost/index.html
 Connection: keep-alive
+
 username=Hello%21

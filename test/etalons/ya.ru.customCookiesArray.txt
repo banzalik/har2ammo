@@ -1,4 +1,4 @@
-339 _
+341 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -9,7 +9,8 @@ Cache-Control: max-age=0
 Cookie: testcustomCookies=1
 Connection: keep-alive
 
-339 _
+
+341 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -20,7 +21,8 @@ Cache-Control: max-age=0
 Cookie: testcustomCookies=2
 Connection: keep-alive
 
-339 _
+
+341 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -30,4 +32,5 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0
 Cache-Control: max-age=0
 Cookie: testcustomCookies=3
 Connection: keep-alive
+
 

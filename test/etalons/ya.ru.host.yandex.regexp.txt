@@ -1,4 +1,4 @@
-602 _system_fc06_html
+604 _system_fc06_html
 GET /system/fc06.html HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: kiks.yandex.ru
@@ -11,6 +11,8 @@ Connection: keep-alive
 If-Modified-Since: Thu, 03 Dec 2009 15:22:16 GMT
 Cache-Control: max-age=0
 
-33 _system_fc06_swf
+
+35 _system_fc06_swf
 GET /system/fc06.swf HTTP/1.1
+
 
