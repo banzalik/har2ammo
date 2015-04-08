@@ -1,4 +1,4 @@
-303 _
+310 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -7,5 +7,4 @@ User-Agent: yandex-tank yandex-tank/har2ammo
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
 Connection: keep-alive
-
 

@@ -253,14 +253,14 @@ Har2Ammo = function (program, config) {
             self = this,
             post = '';
 
-        req.push(method + ' ' + target + ' ' + httpVersion + '\n');
+        req.push(method + ' ' + target + ' ' + httpVersion + '\r\n');
 
         if (method === 'POST') {
             if (request.postData && request.postData.text) {
                 post = this.replaceContent(request.postData.text);
-                req.push('Content-Length: ' + Buffer.byteLength(post, 'utf8') + '\n');
+                req.push('Content-Length: ' + Buffer.byteLength(post, 'utf8') + '\r\n');
             } else {
-                req.push('Content-Length: 0\n');
+                req.push('Content-Length: 0\r\n');
             }
         }
 
@@ -279,12 +279,12 @@ Har2Ammo = function (program, config) {
                         } else {
                             cookie = self.config.customCookies[self.cookieNumber];
                         }
-                        string = item.name + ': ' + cookie + '\n';
+                        string = item.name + ': ' + cookie + '\r\n';
                         req.push(string);
                         break;
                     }
                     if (!self.config.clearCookies) {
-                        string = item.name + ': ' + item.value + '\n';
+                        string = item.name + ': ' + item.value + '\r\n';
                         req.push(string);
                         string = self.replaceCookies(string);
                         break;
@@ -293,7 +293,7 @@ Har2Ammo = function (program, config) {
                 case 'Content-Length':
                     break;
                 default :
-                    string = item.name + ': ' + item.value + '\n';
+                    string = item.name + ': ' + item.value + '\r\n';
                     string = self.replaceHeaders(string);
                     req.push(string);
                     break;
@@ -301,7 +301,7 @@ Har2Ammo = function (program, config) {
 
         });
 
-        req.push('\n');
+        //req.push('\n');
         req.push(post);
         req.push('\r\n');
 
@@ -427,7 +427,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.5')
+    .version('0.3.6')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')

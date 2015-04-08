@@ -1,4 +1,4 @@
-351 _
+359 _
 GET /?123456789 HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -8,5 +8,4 @@ Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0
 Cache-Control: max-age=0
 Cookie: yandexuid=3368441331406133331
 Connection: keep-alive
-
 

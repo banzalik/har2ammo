@@ -1,4 +1,4 @@
-391 _
+398 _
 GET / HTTP/1.1
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
@@ -7,5 +7,4 @@ User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (K
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
 Connection: keep-alive
-
 
