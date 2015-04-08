@@ -1,5 +1,6 @@
 node_modules/
 .idea/
 coverage/
+.vagrant/
 
 npm-debug.log

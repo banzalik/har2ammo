@@ -20,7 +20,8 @@ var program = require('commander'),
             headers: false,
             content: false,
             cookies: false,
-            every: false
+            every: false,
+            tags: false
         }
     }, Har2Ammo;
 
@@ -311,8 +312,9 @@ Har2Ammo = function (program, config) {
         resp = this.concatArray(req);
 
         if (this.config.autoTag) {
-            tag = ' ' + this.replaceDate(url.parse(request.url).pathname, this.config.replaceDateInURL, true)
+            var tagProcess = ' ' + this.replaceDate(url.parse(request.url).pathname, this.config.replaceDateInURL, true)
                 .replace(/\.|\//g, '_').replace(/^__/g, '_');
+            tag = this.replaceTag(tagProcess);
         }
 
         respSize = Buffer.byteLength(resp, 'utf8') + tag + '\n';
@@ -365,7 +367,11 @@ Har2Ammo = function (program, config) {
     this.replaceCookies = function (data) {
         var replaceConfig = this.config.replaceData.cookies;
         return this.replaceEvery(this.replaceData(data, replaceConfig));
+    };
 
+    this.replaceTag = function (data) {
+        var replaceConfig = this.config.replaceData.tags;
+        return this.replaceData(data, replaceConfig);
     };
 
     this.replaceEvery = function (data) {
@@ -430,7 +436,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.7')
+    .version('0.3.8')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')

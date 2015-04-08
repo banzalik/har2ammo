@@ -1,0 +1,42 @@
+457 INDEX-html
+GET /index.html HTTP/1.1
+Accept-Encoding: gzip, deflate, sdch
+Host: localhost
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2,uk;q=0.2
+User-Agent: yandex-tank yandex-tank/har2ammo
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Cache-Control: max-age=0
+If-None-Match: "4807605-197-Fri Mar 27 2015 10:21:35 GMT+0200 (EET)"
+Connection: keep-alive
+If-Modified-Since: Fri, 27 Mar 2015 08:21:35 GMT
+
+
+594 POST-html
+GET /post.html?password=123 HTTP/1.1
+Accept-Encoding: gzip, deflate, sdch
+Host: localhost
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2,uk;q=0.2
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Referer: http://localhost/index.html
+If-None-Match: "4807098-0-Fri Mar 27 2015 10:17:45 GMT+0200 (EET)"
+Connection: keep-alive
+If-Modified-Since: Fri, 27 Mar 2015 08:17:45 GMT
+Cache-Control: max-age=0
+
+
+568 POST-html
+POST /post.html HTTP/1.1
+Content-Length: 17
+Origin: http://localhost
+Accept-Encoding: gzip, deflate
+Host: localhost
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2,uk;q=0.2
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.104 Safari/537.36
+Content-Type: application/x-www-form-urlencoded
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Cache-Control: max-age=0
+Referer: http://localhost/index.html
+Connection: keep-alive
+
+username=Hello%21
