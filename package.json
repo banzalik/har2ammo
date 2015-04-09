@@ -2,7 +2,7 @@
   "name": "har2ammo",
   "description": "HAR to ammo.txt",
   "keywords": "yandex-tank, har2ammo, ammo.txt, har",
-  "version": "0.3.8",
+  "version": "0.3.9",
   "homepage": "https://github.com/banzalik/har2ammo",
   "author": "Aleksandr Boichenko <banzalik@gmail.com> (http://github.com/banzalik)",
   "maintainers": [],

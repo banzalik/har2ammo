@@ -259,6 +259,12 @@ Har2Ammo = function (program, config) {
         if (method === 'POST') {
             if (request.postData && request.postData.text) {
                 post = this.replaceContent(request.postData.text);
+                if (post.indexOf('\n') < 0 && post.indexOf('\r') < 0) {
+                    post += '\r\n';
+                }
+                if (post.indexOf('\n') < 0) {
+                    post += '\r\n';
+                }
                 req.push('Content-Length: ' + Buffer.byteLength(post, 'utf8') + '\r\n');
             } else {
                 req.push('Content-Length: 0\r\n');
@@ -436,7 +442,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.8')
+    .version('0.3.9')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
