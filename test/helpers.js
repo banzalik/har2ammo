@@ -8,7 +8,7 @@ function getFileContent(path) {
 }
 
 var helpers = module.exports = {
-    replaceEtalon: true,
+    replaceEtalon: false,
     getEtalon: function (path) {
         if (!path) {
             return;

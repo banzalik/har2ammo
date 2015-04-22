@@ -217,7 +217,7 @@ Har2Ammo = function (program, config) {
 
     this.processHarItem = function (request) {
         var req = this.buildRequests(request);
-        if (!hasRepeat) {
+        if (!hasRepeat && this.cookieNumber < 1) {
             this.log.ammos++;
         }
         this.log.totalAmmos++;
@@ -253,7 +253,7 @@ Har2Ammo = function (program, config) {
             target = this.absToRelUrl(request.url),
             httpVersion = request.httpVersion || 'HTTP/1.1',
             self = this,
-            post = '', newHeaders = [];
+            post = '';
 
         req.push(this.replaceUrl(method + ' ' + target + ' ' + httpVersion) + '\r\n');
 
@@ -285,7 +285,7 @@ Har2Ammo = function (program, config) {
             });
             request.headers = newHeaders;
         }
-        
+
         _.each(request.headers, function (item) {
             var string;
             switch (item.name) {
@@ -461,7 +461,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.4.0')
+    .version('0.4.1')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
