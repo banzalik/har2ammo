@@ -1,9 +1,9 @@
 341 _
 GET / HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: yandex-tank yandex-tank/har2ammo
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
 Cookie: testcustomCookies=1
@@ -12,10 +12,10 @@ Connection: keep-alive
 
 341 _
 GET / HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: yandex-tank yandex-tank/har2ammo
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
 Cookie: testcustomCookies=2
@@ -24,10 +24,10 @@ Connection: keep-alive
 
 341 _
 GET / HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: ya.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: yandex-tank yandex-tank/har2ammo
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Cache-Control: max-age=0
 Cookie: testcustomCookies=3

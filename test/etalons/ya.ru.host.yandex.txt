@@ -1,9 +1,9 @@
 541 _su_
 GET /su/ HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: kiks.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: yandex-tank yandex-tank/har2ammo
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Referer: http://ya.ru/
 Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yandexuid=7824958081406133331
@@ -11,12 +11,12 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-612 _watch_723233
+524 _watch_723233
 GET /watch/723233 HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: mc.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
 Accept: image/webp,*/*;q=0.8
 Referer: http://ya.ru/
 Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yabs-sid=1563405981406133330; yandexuid=7824958081406133331
@@ -24,12 +24,12 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-573 _data_mail_js
+485 _data_mail_js
 GET /data/mail.js?yaru=y HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: www.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
 Accept: */*
 Referer: http://ya.ru/
 Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yandexuid=7824958081406133331
@@ -37,12 +37,12 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-692 _system_fc06_html
+604 _system_fc06_html
 GET /system/fc06.html HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: kiks.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
 Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
 Referer: http://ya.ru/
 Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yandexuid=7824958081406133331
@@ -51,12 +51,12 @@ If-Modified-Since: Thu, 03 Dec 2009 15:22:16 GMT
 Cache-Control: max-age=0
 
 
-712 _suggest-ya_cgi
+624 _suggest-ya_cgi
 GET /suggest-ya.cgi?callback=jQuery21005751246530562639_1406133337882&v=4&srv=morda_yaru&wiz=TrWth&fact=1&lr=213&icon=1&hl=1&html=1&part=&pos=0&_=1406133337883 HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 Accept-Encoding: gzip,deflate,sdch
 Host: suggest.yandex.ru
 Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.6,en;q=0.4,ar;q=0.2
-User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/36.0.1985.125 Safari/537.36
 Accept: */*
 Referer: http://ya.ru/
 Cookie: fuid01=53cfe45215d1f58e.l2wdfMYrTZPcme9nEQi0qivOJKIwQmMADBHKW5rcHzW1zp0SYUMULJ7lL3sY9uy_fFfIYlsML9a15o6d1NHtzNi8TDmJSX8Pf1J9bmZNQYu2hp8hpMDZFAeThz09nVnH; yandexuid=7824958081406133331
@@ -64,7 +64,8 @@ Connection: keep-alive
 Cache-Control: max-age=0
 
 
-35 _system_fc06_swf
+81 _system_fc06_swf
 GET /system/fc06.swf HTTP/1.1
+User-Agent: yandex-tank yandex-tank/har2ammo
 
 

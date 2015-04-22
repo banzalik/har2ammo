@@ -21,7 +21,8 @@ var program = require('commander'),
             content: false,
             cookies: false,
             every: false,
-            tags: false
+            tags: false,
+            url: false
         }
     }, Har2Ammo;
 
@@ -252,9 +253,9 @@ Har2Ammo = function (program, config) {
             target = this.absToRelUrl(request.url),
             httpVersion = request.httpVersion || 'HTTP/1.1',
             self = this,
-            post = '';
+            post = '', newHeaders = [];
 
-        req.push(method + ' ' + target + ' ' + httpVersion + '\r\n');
+        req.push(this.replaceUrl(method + ' ' + target + ' ' + httpVersion) + '\r\n');
 
         if (method === 'POST') {
             if (request.postData && request.postData.text) {
@@ -272,9 +273,19 @@ Har2Ammo = function (program, config) {
         }
 
         if (this.config.customHeaders.length) {
-            request.headers = this.extend(request.headers, this.config.customHeaders);
+            var customHeadersKeys = [],
+                newHeaders = _.clone(this.config.customHeaders);
+            _.each(this.config.customHeaders, function (obj) {
+                customHeadersKeys.push(obj.name);
+            });
+            _.each(request.headers, function (obj) {
+                if (customHeadersKeys.indexOf(obj.name) < 0) {
+                    newHeaders.push(obj);
+                }
+            });
+            request.headers = newHeaders;
         }
-
+        
         _.each(request.headers, function (item) {
             var string;
             switch (item.name) {
@@ -380,6 +391,11 @@ Har2Ammo = function (program, config) {
         return this.replaceData(data, replaceConfig);
     };
 
+    this.replaceUrl = function (data) {
+        var replaceConfig = this.config.replaceData.url;
+        return this.replaceData(data, replaceConfig);
+    };
+
     this.replaceEvery = function (data) {
         var replaceConfig = this.config.replaceData.every;
         return this.replaceData(data, replaceConfig);
@@ -410,12 +426,15 @@ Har2Ammo = function (program, config) {
         } else {
             return localData;
         }
+        if (!rgx.test(localData)) {
+            return localData;
+        }
         if (_.isString(dataItem.data)) {
             return localData.replace(rgx, dataItem.data);
         } else if (_.isFunction(dataItem.data)) {
             var toReplace = dataItem.data(localData, configLibs);
             if (_.isString(toReplace)) {
-                return localData.replace(rgx, toReplace);
+                return toReplace;
             }
         }
         return localData;
@@ -442,7 +461,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.3.9')
+    .version('0.4.0')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
