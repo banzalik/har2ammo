@@ -1,0 +1,96 @@
+[tank]
+pid = 1105
+lock_dir = /var/lock
+plugin_rcheck = yandextank.plugins.ResourceCheck
+plugin_shellexec = yandextank.plugins.ShellExec
+plugin_phantom = yandextank.plugins.Phantom
+plugin_aggreg = yandextank.plugins.Aggregator
+plugin_autostop = yandextank.plugins.Autostop
+plugin_monitoring = 
+plugin_console = yandextank.plugins.ConsoleOnline
+plugin_tips = yandextank.plugins.TipsAndTricks
+plugin_totalautostop = yandextank.plugins.TotalAutostop
+plugin_loadosophia = 
+plugin_graphite = yandextank.plugins.GraphiteUploader
+plugin_rcassert = yandextank.plugins.RCAssert
+artifacts_dir = artifacts
+flush_config_to = 
+artifacts_base_dir = .
+
+[phantom]
+address = staging.liveone.net:443
+ssl = 1
+rps_schedule = const(1, 10, 2m)
+ammofile = chat_write.txt
+instances = 5000
+config = 
+eta_file = 
+phantom_path = phantom
+enum_ammo = False
+buffered_seconds = 2
+phout_file = /vagrant/phout_2OL2Ta.log
+threads = 1
+phantom_modules_path = /usr/lib/phantom
+additional_libs = 
+writelog = none
+tank_type = http
+gatling_ip = 
+method_prefix = method_stream
+method_options = 
+source_log_prefix = 
+phantom_http_line = 
+phantom_http_field_num = 
+phantom_http_field = 
+phantom_http_entity = 
+connection_test = 1
+port = 
+ammo_type = phantom
+loop = -1
+ammo_limit = -1
+instances_schedule = 
+uris = 
+headers = 
+header_http = 1.0
+autocases = 0
+use_caching = 1
+file_cache = 8192
+cache_dir = .
+force_stepping = 0
+stpd_file = ./chat_write.txt_d84a95e7f68c981b3c879f9b4cd6c7f2.stpd
+chosen_cases = 
+
+[autostop]
+autostop = time(2000,60)
+
+[rcheck]
+interval = 10s
+disk_limit = 2048
+mem_limit = 512
+
+[shellexec]
+prepare = 
+start = 
+end = 
+poll = 
+post_process = 
+
+[aggregator]
+time_periods = 1ms 2 3 4 5 6 7 8 9 10 20 30 40 50 60 70 80 90 100 150 200 250 300 350 400 450 500 600 650 700 750 800 850 900 950 1s 1500 2s 2500 3s 3500 4s 4500 5s 5500 6s 6500 7s 7500 8s 8500 9s 9500 10s 11s
+precise_cumulative = 1
+
+[console]
+info_panel_width = 33
+short_only = 0
+disable_all_colors = 0
+disable_colors = 
+
+[tips]
+disable = 0
+
+[graphite]
+address = 
+
+[rcassert]
+pass = 
+fail_code = 10
+

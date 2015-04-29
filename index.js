@@ -388,12 +388,12 @@ Har2Ammo = function (program, config) {
 
     this.replaceTag = function (data) {
         var replaceConfig = this.config.replaceData.tags;
-        return this.replaceData(data, replaceConfig);
+        return this.replaceEvery(this.replaceData(data, replaceConfig));
     };
 
     this.replaceUrl = function (data) {
         var replaceConfig = this.config.replaceData.url;
-        return this.replaceData(data, replaceConfig);
+        return this.replaceEvery(this.replaceData(data, replaceConfig));
     };
 
     this.replaceEvery = function (data) {
@@ -461,7 +461,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.4.1')
+    .version('0.4.2')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
