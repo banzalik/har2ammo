@@ -461,7 +461,7 @@ Har2Ammo = function (program, config) {
 };
 
 program
-    .version('0.4.2')
+    .version('0.4.3')
     .option('-i, --input <file>', 'path to HAR file')
     .option('-o, --output <file> [required]', 'path to ammo.txt file')
     .option('-h, --host <hostname>', 'base host, strong val')
