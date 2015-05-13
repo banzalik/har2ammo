@@ -20,8 +20,8 @@
   "scripts": {
     "test": "npm run-script jscs && npm run-script jshint && npm run-script grammar && npm run-script mocha",
     "mocha": "node_modules/.bin/mocha --reporter spec --bail --check-leaks test/",
-    "jshint": "node_modules/.bin/jshint index.js test/",
-    "jscs": "node_modules/.bin/jscs index.js test/",
+    "jshint": "node_modules/.bin/jshint index.js test/ examplesConfigs/",
+    "jscs": "node_modules/.bin/jscs index.js test/ examplesConfigs/",
     "grammar": "node_modules/.bin/yaspeller README.md",
     "publish": "npm publish ./"
   },
